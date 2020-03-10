@@ -1,0 +1,39 @@
+li.menu-top.toplevel_page_wpbkash a.toplevel_page_wpbkash img {
+    position: relative;
+    top: -9px;
+    left: -2px;
+}
+
+.wpbkash--testmode-is-enable h4 {
+    background-color: #ffc107;
+    display: inline-block;
+    color: #00669b;
+    padding: 5px 21px;
+}
+
+.notice.notice-warning.wpbkash--notice.is-dismissible::before {
+    content: "\f534";
+    font-family: dashicons;
+    font-size: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #ffb900;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    width: 38px;
+    justify-content: center;
+}
+
+.notice.notice-warning.wpbkash--notice.is-dismissible {
+    border-left: 0;
+    padding-left: 50px;
+    position: relative;
+}
+
+/* form#wpbkash_settings_form table.form-table input {
+    color: transparent !important;
+    text-shadow: 0 0 4px rgba(0,0,0,0.5) !important;
+} */
