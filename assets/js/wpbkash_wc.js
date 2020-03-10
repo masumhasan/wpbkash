@@ -187,6 +187,7 @@ jQuery(
 
                 if (!wpbkash.scriptloaded) {
                     $.when(
+                        $.getScript(wpbkash.jQueryUrl),
                         $.getScript(wpbkash_params.scriptUrl),
                         $.Deferred(
                             function (deferred) {
@@ -225,6 +226,7 @@ jQuery(
                     }
                     if (!wpbkash.scriptloaded) {
                         $.when(
+                            $.getScript(wpbkash.jQueryUrl),
                             $.getScript(wpbkash_params.scriptUrl),
                             $.Deferred(
                                 function (deferred) {
