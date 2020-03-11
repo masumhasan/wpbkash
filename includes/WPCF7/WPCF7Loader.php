@@ -38,6 +38,7 @@ final class WPCF7Loader {
 		$mode          = ( isset( $options['testmode'] ) && ! empty( $options['testmode'] ) ) ? 'sandbox' : 'pay';
 		$bkash_version = WPBKASH()->bkash_api_version;
 		$filename      = ( 'sandbox' === $mode ) ? 'bKash-checkout-sandbox' : 'bKash-checkout';
+		$jqueryload = ( ! empty( $options['jqueryload'] ) ) ? true : false;
 
 		wp_register_script( 'wpbkash_wpcf7', WPBKASH_URL . 'assets/js/wpbkash_wpcf7.js', [ 'jquery' ], '0.1', true );
 		wp_register_style( 'wpbkash-front', WPBKASH_URL . 'assets/css/wpbkash-frontend.css' );
@@ -50,6 +51,7 @@ final class WPCF7Loader {
 				'ajax_url'  => admin_url( 'admin-ajax.php' ),
 				'nonce'     => wp_create_nonce( 'wpbkash_nonce' ),
 				'i18n_error' => sprintf( __( 'Something wen\'t wrong, please try again or contact with <a href="%s">site admin</a>.', 'wpbkash' ), get_bloginfo('admin_email') ),
+				'jqueryload' => $jqueryload,
 				'scriptUrl' => "https://scripts.{$mode}.bka.sh/versions/{$bkash_version}/checkout/{$filename}.js",
 			]
 		);
