@@ -254,6 +254,14 @@ class Settings {
 			'setting_section_id'
 		);
 
+		add_settings_field(
+			'jqueryload',
+			__( 'Load jQuery', 'wpbkash' ),
+			[ $this, 'jqueryload' ],
+			'wpbkash_settings',
+			'setting_section_id'
+		);
+
 	}
 
 
@@ -290,7 +298,7 @@ class Settings {
 		if ( isset( $input['testmode'] ) ) {
 			$new_input['testmode'] = sanitize_text_field( $input['testmode'] );
 		}
-
+		
 		if ( isset( $input['app_key'] ) ) {
 			$new_input['app_key'] = sanitize_text_field( $input['app_key'] );
 		}
@@ -305,6 +313,10 @@ class Settings {
 
 		if ( isset( $input['password'] ) ) {
 			$new_input['password'] = sanitize_text_field( $input['password'] );
+		}
+
+		if ( isset( $input['jqueryload'] ) ) {
+			$new_input['jqueryload'] = sanitize_text_field( $input['jqueryload'] );
 		}
 
 		return $new_input;
@@ -336,12 +348,11 @@ class Settings {
 			}
 			?>
 			 />
-		<?php esc_html_e( 'Enable Test Mode', 'wpbkash' ); ?>
+			<?php esc_html_e( 'Enable Test Mode', 'wpbkash' ); ?>
 		</label>
-		 
 		<?php
 	}
-
+	
 	/**
 	 * Get the settings option array and print one of its values
 	 */
@@ -383,6 +394,25 @@ class Settings {
 		);
 	}
 
+	/**
+	 * Enable disable jquery version loading caps
+	 */
+	public function jqueryload() {
+		?>
+		<label for="jqueryload">
+			<input type="checkbox" id="jqueryload" name="wpbkash_settings_fields[jqueryload]" value="1" 
+			<?php
+			if ( isset( $this->options['jqueryload'] ) && 1 == $this->options['jqueryload'] ) {
+				echo 'checked="checked"';
+			}
+			?>
+			 />
+		<?php esc_html_e( 'Load another version of jQuery when bkash init', 'wpbkash' ); ?>
+		</label>
+		 
+		<?php
+	}
+
 
 	/**
 	 * Main Settings Instance
@@ -404,4 +434,3 @@ class Settings {
 	}
 
 }
-
