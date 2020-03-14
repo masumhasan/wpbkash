@@ -6,7 +6,6 @@ jQuery(
             trigger: '#bkash_trigger',
             onTrigger: '#bkash_on_trigger',
             frontForm: '#wpbkash--frontend-form',
-            jQueryUrl: 'https://code.jquery.com/jquery-3.4.1.min.js',
 
             // Address data.
             scriptloaded: false,
@@ -65,7 +64,6 @@ jQuery(
 
                 if (!wpbkash.scriptloaded) {
                     $.when(
-                        (wpbkash_params.jqueryload) ? $.getScript(wpbkash.jQueryUrl) : '',
                         $.getScript(wpbkash_params.scriptUrl),
                         $.Deferred(
                             function (deferred) {
@@ -74,6 +72,7 @@ jQuery(
                         )
                     ).done(
                         function () {
+                            window.$ = jQuery.noConflict(true);
                             wpbkash.scriptloaded = true;
                             wpbkash.wcbkashInit($self);
                         }

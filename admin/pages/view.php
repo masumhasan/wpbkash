@@ -49,7 +49,7 @@ $entry    = wpbkash_get_entry( $entry_id );
 	" class="page-title-action"><?php esc_html_e( 'Edit', 'wpbkash' ); ?></a>
 	<hr class="wp-header-end">
 
-	<table class="form-table">
+	<table class="form-table view-entry-table">
 		<tbody>
 			<tr>
 				<th scope="row">

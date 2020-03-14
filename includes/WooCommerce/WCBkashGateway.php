@@ -39,7 +39,6 @@ class WCBkashGateway extends \WC_Payment_Gateway {
 		$this->app_secret = isset( $option['app_secret'] ) ? sanitize_key( $option['app_secret'] ) : '';
 		$this->username   = isset( $option['username'] ) ? sanitize_key( $option['username'] ) : '';
 		$this->password   = isset( $option['password'] ) ? sanitize_key( $option['password'] ) : '';
-		$this->jqueryload   = isset( $option['jqueryload'] ) ? (boolean) $option['jqueryload'] : false;
 
 		$this->init_form_fields();
 		$this->init_settings();
@@ -50,7 +49,6 @@ class WCBkashGateway extends \WC_Payment_Gateway {
 		add_filter( 'woocommerce_available_payment_gateways', [ $this, 'payment_availability' ] );
 
 		add_action( 'wp_enqueue_scripts', [ $this, 'payment_scripts' ] );
-
 	}
 
 	/**
@@ -105,7 +103,6 @@ class WCBkashGateway extends \WC_Payment_Gateway {
 				'ajax_url'  => admin_url( 'admin-ajax.php' ),
 				'nonce'     => wp_create_nonce( 'wpbkash_nonce' ),
 				'bkash_error'     => __( 'WooCommerce bKash credentials are incorrect or missing any required field.', 'wpbkash' ),
-				'jqueryload' => $this->jqueryload,
 				'scriptUrl' => "https://scripts.{$mode}.bka.sh/versions/{$bkash_version}/checkout/{$filename}.js"
 			]
 		);

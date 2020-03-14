@@ -8,7 +8,6 @@ jQuery(
             orderReview: 'form#order_review',
             trigger: '#bkash_trigger',
             onTrigger: '#bkash_on_trigger',
-            jQueryUrl: 'https://code.jquery.com/jquery-3.4.1.min.js',
 
             // Order notes.
             orderNotesValue: '',
@@ -185,11 +184,8 @@ jQuery(
                     return false;
                 }
 
-                var ml = true;
-
                 if (!wpbkash.scriptloaded) {
                     $.when(
-                        (wpbkash_params.jqueryload) ? $.getScript(wpbkash.jQueryUrl) : '',
                         $.getScript(wpbkash_params.scriptUrl),
                         $.Deferred(
                             function (deferred) {
@@ -198,6 +194,7 @@ jQuery(
                         )
                     ).done(
                         function () {
+                            window.$ = jQuery.noConflict(true);
                             wpbkash.scriptloaded = true;
                             wpbkash.wcbkashInit(order_id, redirect);
                         }
@@ -228,7 +225,6 @@ jQuery(
                     }
                     if (!wpbkash.scriptloaded) {
                         $.when(
-                            (wpbkash_params.jqueryload) ? $.getScript(wpbkash.jQueryUrl) : '',
                             $.getScript(wpbkash_params.scriptUrl),
                             $.Deferred(
                                 function (deferred) {
@@ -237,6 +233,7 @@ jQuery(
                             )
                         ).done(
                             function () {
+                                window.$ = jQuery.noConflict(true);
                                 wpbkash.scriptloaded = true;
                                 wpbkash.wcOrderReviewInit(parseInt(order_id), redirect[0]);
                                 return false;
@@ -297,7 +294,6 @@ jQuery(
 
                 if (!wpbkash.scriptloaded) {
                     $.when(
-                        (wpbkash_params.jqueryload) ? $.getScript(wpbkash.jQueryUrl) : '',
                         $.getScript(wpbkash_params.scriptUrl),
                         $.Deferred(
                             function (deferred) {
@@ -306,6 +302,7 @@ jQuery(
                         )
                     ).done(
                         function () {
+                            window.$ = jQuery.noConflict(true);
                             wpbkash.scriptloaded = true;
                             wpbkash.wcbkashInit($self);
                         }
