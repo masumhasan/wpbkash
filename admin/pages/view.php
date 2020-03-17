@@ -56,7 +56,7 @@ $entry    = wpbkash_get_entry( $entry_id );
 					<label><?php _e( 'Transaction ID', 'wpbkash' ); ?></label>
 				</th>
 				<td>
-					<?php echo esc_html( $entry->trx_id ); ?>
+					<?php echo esc_html( strtoupper( $entry->trx_id ) ); ?>
 				</td>
 			</tr>
 			<tr>

@@ -2,16 +2,20 @@
     max-width: 1170px;
     margin: 0 auto;
 }
+
 .wpbkash--frontend-header {
     padding: 20px 0;
     background-color: #0663B2;
 }
+
 .wpbkash--frontend-header-wrap {
     text-align: center;
 }
-.wpbkash--frontend-header-logo{
+
+.wpbkash--frontend-header-logo {
     max-width: 35px;
 }
+
 .wpbkash--frontend-btn {
     border: 1px solid #fff;
     color: #fff;
@@ -40,23 +44,29 @@
     flex-direction: column;
     justify-content: center;
 }
+
 .wpbkash--frontend-main-contant h4 {
     margin: 0 0 7px;
     font-size: 20px;
 }
-.wpbkash--frontend-main-contant p{
+
+.wpbkash--frontend-main-contant p {
     margin: 0;
 }
+
 .wpbkash--frontend-main-contant h5 {
     margin: 0 0 14px;
     text-transform: uppercase;
 }
+
 .wpbkash--frontend-price {
     margin: 35px 0 0;
 }
+
 .wpbkash--frontendvalue {
     font-size: 65px;
 }
+
 .wpbkash--frontend-currency {
     font-size: 24px;
     vertical-align: top;
@@ -73,6 +83,7 @@
     font-size: 12px;
     color: #fff;
 }
+
 .wpbkash--frontend-report-link {
     text-align: center;
     display: block;
@@ -144,9 +155,10 @@ span.wpbkash--btn-content {
     display: -webkit-box;
     display: flex;
     -webkit-box-align: center;
-            align-items: center;
+    align-items: center;
     width: 100%;
     font-weight: normal;
+    text-transform: capitalize;
 }
 
 button.button.wpbkash--simple-btn span.wpbkash--processing-content img {
@@ -165,9 +177,9 @@ button.button.wpbkash--simple-btn span.wpbkash--processing-content img {
     background-position: 50% 50%;
     background-repeat: no-repeat;
     -webkit-box-align: center;
-            align-items: center;
+    align-items: center;
     -webkit-box-pack: center;
-            justify-content: center;
+    justify-content: center;
     margin: auto;
     margin-bottom: 20px;
 }
@@ -217,6 +229,7 @@ span.wpbkash--frontend-bdt {
     margin-bottom: 0;
     font-size: 24px;
 }
+
 .wpbkash--msg-text {
     margin-top: 15px;
 }
@@ -233,9 +246,14 @@ span.wpbkash--frontend-bdt {
     list-style: none;
 }
 
+.wpbkash--msg-icon svg {
+    display: inline-block;
+    width: auto;
+}
+
 .wpbkash--notice.wpbkash--notice-error {
     background-color: #e2401c;
-} 
+}
 
 .wpbkash--notice a {
     color: #fff;

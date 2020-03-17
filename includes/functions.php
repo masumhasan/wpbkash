@@ -24,7 +24,7 @@ function wpbkash_get_all_entry( $args = array() ) {
 		'orderby' => 'id',
 		'status'  => '',
 		's'       => '',
-		'order'   => 'ASC',
+		'order'   => 'DESC',
 	);
 
 	$table = $wpdb->prefix . 'wpbkash';
@@ -251,10 +251,9 @@ You are now successfully registered for the Dhaka Half Marathon 2020. Please tak
 
 Registration Details:
 
-First Name: 	
-Last Name: 	
-Email: 		
-Transaction ID: 	
+Full Name: [your-name]
+Email: [your-email]
+Transaction ID: [wpbkash-amount]
 Registration ID:
 Blah blah .....
 

@@ -125,7 +125,7 @@ final class Ajax {
 
 		$updated = $this->update_transaction( $data );
 
-		$this->confirmation_mail( $entry_id );
+		$this->confirmation_mail( $entry_id, $data->trxID, $data->paymentID );
 
 		wp_send_json_success(
 			[
@@ -181,7 +181,7 @@ final class Ajax {
 	 *
 	 * @param int $entry_id
 	 */
-	public function confirmation_mail( $entry_id ) {
+	public function confirmation_mail( $entry_id, $trx_id, $paymentid ) {
 
 		$entry_id = (int) $entry_id;
 
@@ -211,6 +211,8 @@ final class Ajax {
 			'sitename'           => wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ),
 			'siteurl'            => home_url(),
 			'amount'             => $entry->amount,
+			'trx_id'             => $trx_id,
+			'paymentid'          => $paymentid,
 			'entry_id'           => $entry_id,
 			'form_id'            => $entry->ref_id,
 			'admin_email'        => get_option( 'admin_email' )
@@ -242,10 +244,12 @@ final class Ajax {
 		$content = apply_filters( 'wpbkash_confirmed_email_content', $email_text, $email_data );
 
 		$tag_register = [
-			'wpbkash-sitename' => $email_data['sitename'],
-			'wpbkash-siteurl'  => esc_url_raw( $email_data['siteurl'] ),
-			'wpbkash-admin'    => $email_data['admin_email'],
-			'wpbkash-amount'   => (int) $email_data['amount']
+			'wpbkash-sitename'  => $email_data['sitename'],
+			'wpbkash-siteurl'   => esc_url_raw( $email_data['siteurl'] ),
+			'wpbkash-admin'     => $email_data['admin_email'],
+			'wpbkash-trx_id'    => $email_data['trx_id'],
+			'wpbkash-paymentid' => $email_data['paymentid'],
+			'wpbkash-amount'    => (int) $email_data['amount']
 		];
 
 		/**

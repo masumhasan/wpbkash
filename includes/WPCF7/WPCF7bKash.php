@@ -311,11 +311,11 @@ final class WPCF7bKash {
 	 */
 	function wpcf7_add_wpbkash_bkash( $post ) {
 		$desc_link   = wpcf7_link(
-			__( 'https://contactform7.com/additional-settings/', 'wpbkash' ),
+			__( 'https://github.com/mlbd/wpbkash/', 'wpbkash' ),
 			__( 'WPbKash bKash Settings', 'wpbkash' )
 		);
 		$description = __( 'Use listed shortcode for proper email body. For details, see %s.', 'wpbkash' );
-		// $description = sprintf( esc_html( $description ), $desc_link );
+		$description = sprintf( esc_html( $description ), $desc_link );
 
 		$wpbkash_enable = get_post_meta( $post->id(), '_wpbkash_enable', true );
 		$wpbkash_amount = get_post_meta( $post->id(), '_wpbkash_amount', true );
@@ -345,6 +345,8 @@ final class WPCF7bKash {
 				'wpbkass-sitename',
 				'wpbkass-url',
 				'wpbkass-admin',
+				'wpbkash-trx_id',
+				'wpbkash-paymentid'
 			];
 			$tags = apply_filters( 'wpbkash_wpcf7_editor_panels_tag', $tags, $post );
 			foreach ( $tags as $tag ) {
@@ -401,8 +403,8 @@ final class WPCF7bKash {
 					<td>
 						<?php
 						$confirmed_body = wpbkash_confirmation_default_template();
-						if( ! empty( $wpbkash_pay_mail ) ) {
-							$confirmed_body = $wpbkash_pay_mail;
+						if( ! empty( $wpbkash_confirm_mail ) ) {
+							$confirmed_body = $wpbkash_confirm_mail;
 						} ?>
 						<textarea id="wpcf7-wpbkash-confirm" name="wpcf7-wpbkash-confirm" cols="100" rows="18" class="large-text code" <?php echo ! empty( $wpbkash_confirm_disabled ) ? 'disabled="disabled"' : ''; ?>><?php echo esc_textarea( $confirmed_body ); ?></textarea>
 						<p><label for="wpcf7-wpbkash-confirm-use-html"><input type="checkbox" id="wpcf7-wpbkash-confirm-use-html" name="wpcf7-wpbkash-confirm-use-html" value="1"<?php echo ( $wpbkash_confirm_use_html ) ? ' checked="checked"' : ''; ?> /> <?php esc_html_e( 'Use HTML content type', 'wpbkash' ); ?></label></p>
@@ -440,13 +442,13 @@ final class WPCF7bKash {
 		}
 
 		if ( ! empty( $_POST['wpcf7-wpbkash-pay'] ) ) {
-			update_post_meta( $form->id(), '_wpbkash_pay_mail', esc_textarea( $_POST['wpcf7-wpbkash-pay'] ) );
+			update_post_meta( $form->id(), '_wpbkash_pay_mail', sanitize_textarea_field( $_POST['wpcf7-wpbkash-pay'] ) );
 		} else {
 			delete_post_meta( $form->id(), '_wpbkash_pay_mail' );
 		}
 
 		if ( ! empty( $_POST['wpcf7-wpbkash-confirm'] ) ) {
-			update_post_meta( $form->id(), '_wpbkash_confirm_mail', esc_textarea( $_POST['wpcf7-wpbkash-confirm'] ) );
+			update_post_meta( $form->id(), '_wpbkash_confirm_mail', sanitize_textarea_field( $_POST['wpcf7-wpbkash-confirm'] ) );
 		} else {
 			delete_post_meta( $form->id(), '_wpbkash_confirm_mail' );
 		}
@@ -458,12 +460,12 @@ final class WPCF7bKash {
 		}
 
 		if ( ! empty( $_POST['wpcf7-wpbkash-confirm-use-html'] ) ) {
-			update_post_meta( $form->id(), '_wpbkash_confirm_use_html', sanitize_text_field( $_POST['wpcf7-wpbkash-confirm-use-html'] ) );
+			update_post_meta( $form->id(), '_wpbkash_confirm_use_html', sanitize_key( $_POST['wpcf7-wpbkash-confirm-use-html'] ) );
 		} else {
 			delete_post_meta( $form->id(), '_wpbkash_confirm_use_html' );
 		}
 		if ( ! empty( $_POST['wpcf7-wpbkash-confirm-disabled'] ) ) {
-			update_post_meta( $form->id(), '_wpbkash_confirm_disabled', sanitize_text_field( $_POST['wpcf7-wpbkash-confirm-disabled'] ) );
+			update_post_meta( $form->id(), '_wpbkash_confirm_disabled', sanitize_key( $_POST['wpcf7-wpbkash-confirm-disabled'] ) );
 		} else {
 			delete_post_meta( $form->id(), '_wpbkash_confirm_disabled' );
 		}
