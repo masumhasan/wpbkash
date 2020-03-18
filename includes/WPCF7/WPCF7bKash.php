@@ -91,6 +91,7 @@ final class WPCF7bKash {
 			'ref_id'      => intval( $email_data['form_id'] ),
 			'key_token'   => sanitize_key( $key ),
 			'status'      => 'pending',
+			'form_data'   => maybe_serialize($form_data),
 			'key_created' => current_time( 'mysql' ),
 		];
 

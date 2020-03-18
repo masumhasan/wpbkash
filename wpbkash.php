@@ -1,6 +1,6 @@
 <?php
 /*
- * Plugin Name:       WPbKash
+ * Plugin Name:       bKash WordPress Payment
  * Plugin URI:        https://wordpress.org/plugins/wpbkash/
  * Description:       bKash payment gateway integration for WordPress
  * Version:           0.1

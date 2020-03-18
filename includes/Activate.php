@@ -45,6 +45,7 @@ class Activate
             `key_token` varchar(150) DEFAULT NULL,
             `key_created` datetime DEFAULT NULL,
             `data` longtext,
+            `form_data` longtext,
             PRIMARY KEY (`id`),
             KEY `trx_id` (`trx_id`)
         ) $charset_collate;";

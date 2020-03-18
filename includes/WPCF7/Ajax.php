@@ -274,6 +274,19 @@ final class Ajax {
 			$content = str_replace( "[{$tag}]", $value, $content );
 		}
 
+		if ( isset( $entry->form_data ) ) :
+			$form_data = maybe_unserialize( $entry->form_data );
+
+			preg_match_all( '/\[([^\]]*)\]/', $content, $content_tags );
+			if ( ! empty( $content_tags ) && isset( $content_tags[1] ) && ! empty( $content_tags[1] ) ) {
+				foreach ( (array) $content_tags[1] as $tag ) {
+					if ( isset( $form_data[ $tag ] ) ) {
+						$content = str_replace( "[{$tag}]", $form_data[ $tag ], $content );
+					}
+				}
+			}
+		endif;
+
 		$subject = sprintf(
 			/* translators: Privacy data request confirmed notification email subject. 1: Site title, 2: Name of the confirmed action. */
 			__( '[%1$s] Payment Confirmed' ),

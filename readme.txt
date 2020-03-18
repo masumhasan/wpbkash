@@ -1,4 +1,4 @@
-=== WPbKash ===
+===  bKash WordPress Payment ===
 Contributors: mlimon, themepaw
 Tags: bkash, gateway, woocommerce, wpcf7, BDT, bangladesh
 Requires at least: 5.0
@@ -8,7 +8,7 @@ Stable tag: trunk
 License: GPLv2 Or Later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-bKash payment gateway integration for WordPress
+bKash Payment Solution for WordPress / WooCommerce
 
 == Description ==
 
@@ -28,7 +28,7 @@ WPbKash is a complete solution for bKash merchant payment for WooCommerce or Wor
 
 [youtube https://www.youtube.com/watch?v=Cmb0AEIFm7Y]
 
-== Installation ==
+= Installation =
 
 This section describes how to install the plugin and get it working.
 1. Go to "Add new" from plugins menu in your dashboard.
